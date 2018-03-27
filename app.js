@@ -23,7 +23,9 @@ var middleware = require("./middleware/index");
 const sendOne = require('./mail').sendOne;
 const sendReply = require('./mail').sendReply;
 
-mongoose.connect("mongodb://localhost/ap_lit2");
+//mongoose.connect("mongodb://localhost/ap_lit2");
+mongoose.connect("mongodb://thomas:jazzy@ds129796.mlab.com:29796/aplithub");
+    
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
