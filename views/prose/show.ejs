@@ -1,0 +1,17 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div style="text-align: center;"><h1>Prose Excerpts</h1></div>
+<% prose.forEach(function(excerpt){ %>
+    <div class="col-md-6">
+        <h4><%= excerpt.title %></h4>
+        <p>By: <%= excerpt.author %></p>
+        <p><%- excerpt.text.substring(0, 80) %></p>
+        <a class="btn btn-primary btn-sm" href="/prose/<%=excerpt._id%>">View Excerpt</a>
+        <hr>
+    </div>
+    
+<% });  %>
+</div>
+
+<% include ../partials/footer %>

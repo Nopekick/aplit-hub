@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="http://www.bradleysbookoutlet.com/wp-content/uploads/2013/06/bradleys-book-outlet-books-only-logo.png" sizes="16x16" />
+    <title>APLit Hub</title>
+    <link rel="stylesheet" href="/stylesheets/lit.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  </head>
+<body>
+    
+<nav class="navbar navbar-light navbar-inverse" style="background-color: #008c8c; border-radius: 0; border: none; ">
+   <div class="container-fluid">
+            <div class="navbar-header">
+                <a style="color: white;" class="navbar-brand" href="/"><i class="fa fa-book" aria-hidden="true"></i> APLit Hub</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a style="color: white;" href="/">Explore</a></li>
+                <li><a style="color: white;" href="/poems">Poems</a></li>
+                <li><a style="color: white;" href="/prose">Prose</a></li>
+                <li><a style="color: white;" href="/frq">Example FRQs</a></li>
+                <li><a style="color: white;" href="/forum">Forums</a></li>
+            </ul>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <% if(!currentUser){  %>
+                        <li><a style="color: white" href="/login">Login</a></li>
+                        <li><a style="color: white" href="/register">Sign Up</a></li>
+                    <% } else if(currentUser.isAdmin){  %>
+                        <li><a style="color: white" href="/admin">Admin Page</a></li>
+                        <li><a style="color: white" href="#">Signed in as <%= currentUser.username %> (Admin)</a></li>
+                        <li><a style="color: white" href="/logout">Logout</a></li>
+                    <%  } else{ %>
+                        <li><a style="color: white" href="#">Signed in as <%= currentUser.username %></a></li>
+                        <li><a style="color: white" href="/logout">Logout</a></li>
+                    <%  }  %>
+                </ul>
+            </div>
+        </div>
+</nav>
+
+ <div class="container">
+        <% if(error  && error.length > 0){  %>
+            <div class="alert alert-danger" role="alert" style=" text-align: center;">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success  && success.length > 0){  %>
+        <div class="alert alert-success" role="alert" style=" text-align: center;">
+            <%= success %>
+        </div>
+         <% } %>
+    </div>
+
+
+
+
+
+
+
+
+
+
+  

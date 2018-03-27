@@ -1,0 +1,32 @@
+<% include ./partials/header %>
+
+<div class="pp-lg" style="margin-bottom: 55px">
+    <div class="well">
+    <h2 style="text-align: center">Reply to message</h2>
+        <form method="POST" action="/contact/<%= message._id %>/reply">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <label>Recipient</label>
+                <div class="form-group">
+                    <input type="text" name="recipient" class="form-control" value="<%= message.author.username %>"disabled></input>
+                </div>
+                <label>Reply Subject</label>
+                <div class="form-group">
+                    <input type="text" name="subject" class="form-control" value="Re: <%= message.title %>"></input>
+                </div>
+                <label>Reply Message</label>
+                <div class="form-group">
+                    <textarea  cols="47" rows="15" name="content"></textarea>
+                </div>
+                 <button class="btn btn-primary btn-md">Send reply</button>
+                    
+            </div>
+            <div class="col-md-3"></div>
+      </div>
+     </form>
+       
+    </div>
+</div>
+
+<% include ./partials/footer %>

@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="jumbotron">
+    <h3 class="display-3">Edit Prose Excerpt</h3>
+        <form method="POST" action="/prose/<%= prose._id %>?_method=PUT">
+        <div class="row">
+            <div class="col-md-6">
+                <label>Poem Title</label>
+                <div class="form-group">
+                    <input type="text" name="prose[title]" class="form-control" value="<%= prose.title %>"></input>
+                </div>
+                <label>Poem Author</label>
+                <div class="form-group">
+                    <input type="text" name="prose[author]" class="form-control" value="<%= prose.author %>"></input>
+                </div>
+                <button class="btn btn-primary btn-md">Update</button>
+            </div>
+            <div class="col-md-6">
+                    <label>Excerpt</label>
+                    <div class="form-group">
+                        <textarea  cols="65" rows="15" name="poem[content]"><%= prose.text %></textarea>
+                    </div>
+            </div>
+        </div>
+     </form>
+       
+    </div>
+</div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,17 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div style="text-align: center;"><h1>Poems</h1></div>
+<% poems.forEach(function(poem){ %>
+    <div class="col-md-6">
+        <h4><%= poem.title %></h4>
+        <p>By: <%= poem.author %></p>
+        <p><%- poem.text.substring(0, 80) %></p>
+        <a class="btn btn-primary btn-sm" href="/poems/<%=poem._id%>">View Poem</a>
+         <hr>
+    </div>
+  
+<% });  %>
+</div>
+
+<% include ../partials/footer %>

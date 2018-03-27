@@ -1,0 +1,88 @@
+<% include ./partials/header %>
+<h1 style="text-align: center; margin-bottom: 30px;">Admin Page</h1>
+<div class="container">
+    <div class="jumbotron">
+    <h3>Add a new poem</h3>
+        <form method="POST" action="/poems/create">
+        <div class="row">
+            <div class="col-md-6">
+                <label>Poem Title</label>
+                <div class="form-group">
+                    <input type="text" name="title" class="form-control" placeholder="Windy Sky..."></input>
+                </div>
+                <label>Poem Author</label>
+                <div class="form-group">
+                    <input type="text" name="author" class="form-control" placeholder="John Smith"></input>
+                </div>
+                <button class="btn btn-primary btn-md">Create poem</button>
+            </div>
+            <div class="col-md-6">
+                    <label>Poem</label>
+                    <div class="form-group">
+                        <textarea  cols="65" rows="15" name="content"></textarea>
+                    </div>
+            </div>
+        </div>
+     </form>
+       
+    </div>
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+    <h3>Add a new prose excerpt</h3>
+        <form method="POST" action="/prose/create">
+        <div class="row">
+          <div class="col-md-6">
+               <label>Book/Short Story Title</label>
+                <div class="form-group">
+                    <input type="text" name="title" class="form-control" placeholder="Jane Eyre..."></input>
+                </div>
+                <label>Author</label>
+                <div class="form-group">
+                    <input type="text" name="author" class="form-control" placeholder="John Doe"></input>
+                </div>
+                <button class="btn btn-primary btn-md">Create prose excerpt</button>
+            </div>
+        <div class="col-md-6">
+              <label>Excerpt</label>
+                <div class="form-group">
+                    <textarea  cols="65" rows="15" name="content"></textarea>
+                </div>
+                
+        </div>
+      </div>
+     </form>
+       
+    </div>
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+    <h3>Manage User Messages</h3>
+    <a href="/admin/manage" class="btn btn-primary btn-md">Go!</a>
+    </div>
+    
+</div>
+
+
+
+<div class="container">
+<div class="jumbotron">
+  <h3>Send Mail to Subscribers</h3>
+      <form method="POST" action="/admin/send-mail">
+        <div class="form-group">
+            <label> <input type="radio" value="prose" name="type"></input> Prose </label>
+            <label> <input type="radio" value="poem" name="type"></input> Poem </label>
+        </div>
+        <div class="form-group">
+            <label>Input the exact title of the text you want to email</label>
+            <input type="text" disabled required class="form-control" name="title"></input>
+        </div>
+        <button disabled class="btn btn-primary btn-md">Send!</button>
+    </form>
+</div>
+</div>
+
+
+<% include ./partials/footer %>

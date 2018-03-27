@@ -1,0 +1,86 @@
+<% include ../partials/header %>
+
+<div style="margin-bottom: 50px" class="pp">
+    <h3><%= prose.title %></h3>
+    <p>By <%= prose.author %></p>
+    <% if(currentUser && currentUser.isAdmin){  %>
+        <a class="btn btn-xs btn-info" href="/prose/<%=prose._id%>/edit">Edit</a> 
+        <form style="display: inline ; margin-left: 1px;" method="POST" action="/prose/<%=prose._id%>?_method=DELETE">
+            <button class="btn btn-xs btn-danger">Delete</button>
+        </form>
+    <% } %>
+    <hr>
+    <p ><%- prose.text %></p>
+    <a href="/prose" >Back</a>
+     <hr>   
+</div>
+
+
+
+<div class="pp" style="margin-bottom: 45px;">
+   <div class="well">
+  <div class="text-right">
+    <button id="show" class="btn btn-sm btn-success pull-right">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add comment</button>
+      <button id="min" class="btn btn-sm btn-success pull-right" style="display: none;">
+      <span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+  </div>
+  <h4><strong>Comments <span class="glyphicon glyphicon glyphicon-comment" aria-hidden="true"></span></strong></h4>
+  
+  <div id="com" style="display: none" class="well" style="border-left: 1px solid #033caf; border-right: 1px solid #033caf;">
+        <% if(!currentUser) { %>
+      <h5>You need to login before you can comment. <a href="/login">Click here</a> to go to the login page.</h5>
+        <% } %>
+        <% if(currentUser) { %>
+      <form id="add-comment-form" action="/prose/<%= prose._id %>/comments" method="POST">
+        <div class="form-group">
+          <textarea class="form-control" name="comment[text]" placeholder="Write your comment..." form="add-comment-form" rows="3" cols="70"></textarea>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success btn-sm">Comment <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+        </div>
+      </form>
+        <% } %>
+    </div>
+    
+<hr>
+
+    <% if (prose.comments.length === 0) { %>
+  <em style="color: grey;">No comments yet.</em>
+    <% } %>
+    
+    <% prose.comments.forEach(function(comment) { %>
+    <div class="container-fluid">
+      <strong>
+          <% if (currentUser && currentUser._id.equals(comment.author.id)) { %>
+        <!--If the current user owns the comment, change the color of the user icon-->
+        <span style="color: orange;" class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          <% }  %>
+          <%= comment.author.username %>
+      </strong>
+      <p><%= comment.text %></p>
+      </div>
+      <% }) %>
+ </div>
+</div>
+
+
+<script type="text/javascript">
+    var show = document.querySelector("#show");
+    var min = document.querySelector("#min");
+    var com = document.querySelector("#com");
+    show.addEventListener("click", function(){
+        com.style.display = "block";
+        this.style.display = "none";
+        min.style.display= "block"
+    });
+    
+    min.addEventListener("click", function(){
+        com.style.display = "none";
+        show.style.display = "block";
+        this.style.display= "none"
+    });
+</script>
+
+<% include ../partials/footer %>
+

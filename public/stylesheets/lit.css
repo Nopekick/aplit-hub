@@ -1,0 +1,26 @@
+.pp-lg{
+     margin-left: 20%;
+    margin-right: 20%;
+}
+
+.pp {
+     margin-left: 28%;
+    margin-right: 28%;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #f9fbfc;
+    padding: 10px;
+    color: black;
+    /*opacity: .4;*/
+    text-align: center;
+    margin-top: 30px;
+}
+
+.no-overflow{
+   overflow-wrap: break-word;
+}

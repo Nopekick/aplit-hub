@@ -1,0 +1,20 @@
+<% include ./partials/header %>
+
+<div class="container">
+    <div style="text-align: center;"><h1>Manage User Messages</h1></div>
+<% contact.forEach(function(message){ %>
+    <div class="container-fluid col-md-6">
+        <h4><%= message.title %></h4>
+        <p>Submitted by: <%= message.author.username %></p>
+        <p class="no-overflow"><%= message.text%></p>
+         <a class="btn btn-xs btn-info" href="/contact/<%=message._id%>/reply">Reply</a> 
+        <form style="display: inline; margin-left: 1px;" method="POST" action="/contact/<%=message._id%>?_method=DELETE">
+            <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        </form>
+         <hr>
+    </div>
+  
+<% });  %>
+</div>
+
+<% include ./partials/footer %>

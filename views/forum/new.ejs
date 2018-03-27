@@ -1,0 +1,22 @@
+<% include ../partials/header %>
+
+<div class="pp-lg">
+     <h2 >New Forum Post</h2>
+     <p>Post your own literary creations, literary analysis, questions, etc. Please keep it 'school appropiate' though.</p>
+        <form method="POST" action="/forum">
+        <div class="row">
+                <div class="form-group col-sm-12">
+                     <label>Post Title</label>
+                    <input type="text" name="post[title]" class="form-control" placeholder="title"></input>
+                </div>
+                <div class="form-group col-sm-12">
+                    <textarea  cols="107" rows="10" name="post[text]"></textarea>
+                </div>
+                <div class="form-group col-sm-12">
+                    <button class="btn btn-primary btn-md">Post!</button>
+                </div>
+        </div>
+     </form>
+</div>
+
+<% include ../partials/footer %>

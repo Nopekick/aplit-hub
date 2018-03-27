@@ -1,0 +1,21 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div style="text-align: center; margin-bottom: 15px;"><h1>User Forum</h1></div>
+    <% if(currentUser) {  %> 
+    <div><a href="/forum/new" class="btn btn-primary" style="margin-left: 50%; margin-right: 50%; margin-bottom: 30px;">New Post</a></div>
+    <% } %>
+    
+<% posts.forEach(function(post){ %>
+    <div class="col-md-6 well">
+        <h4><%= post.title %></h4>
+        <p>By: <%= post.author.username %></p>
+        <p><%= post.text.substring(0, 80) %></p>
+        <a class="btn btn-primary btn-sm" href="/forum/<%=post._id%>">View Post</a>
+    </div>
+    
+    
+<% });  %>
+</div>
+
+<% include ../partials/footer %>
