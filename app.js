@@ -24,7 +24,7 @@ const sendOne = require('./mail').sendOne;
 const sendReply = require('./mail').sendReply;
 
 //mongoose.connect("mongodb://localhost/ap_lit2");
-mongoose.connect("mongodb://thomas:jazzy@ds129796.mlab.com:29796/aplithub");
+mongoose.connect("");
     
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
